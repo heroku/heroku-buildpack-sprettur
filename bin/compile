@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+# Configure environment
+set -e            # fail fast
+set -o pipefail   # do not ignore exit codes when piping output
+# set -x            # enable debugging
+
+# Clean up leaking environment
+unset GIT_DIR
+
+# Directories
+BUILD_DIR=$1
+BUILDPACK_DIR="$(dirname $(dirname $0))"
+
+echo "-----> Installing sprettur"
+SPRETTUR=/tmp/sprettur
+curl -s -o $SPRETTUR https://sprettur.herokuapp.com/sprettur
+chmod +x $SPRETTUR
+
+echo "-----> Removing Procfile"
+PROCFILE="$BUILD_DIR/Procfile"
+
+if [ -f $PROCFILE ]; then
+  rm $PROCFILE
+  echo "       Procfile removed"
+else
+  echo "       no Procfile found"
+fi
+
+echo "-----> sprettur done"
+
+exit 0
