@@ -11,12 +11,12 @@ unset GIT_DIR
 
 # Directories
 BUILD_DIR=$1
-BUILDPACK_DIR="$(dirname $(dirname $0))"
 
 echo "-----> Installing sprettur"
-SPRETTUR=/tmp/sprettur
-curl -s -o $SPRETTUR https://sprettur.herokuapp.com/sprettur
-chmod +x $SPRETTUR
+SPRETTUR_DIR=$BUILD_DIR/.heroku/bin
+mkdir -p $SPRETTUR_DIR
+curl -s -o $SPRETTUR_DIR/sprettur https://sprettur.herokuapp.com/sprettur
+chmod +x $SPRETTUR_DIR/sprettur
 
 echo "-----> Removing Procfile"
 PROCFILE="$BUILD_DIR/Procfile"
