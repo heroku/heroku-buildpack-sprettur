@@ -25,7 +25,7 @@ fi
 
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
 mkdir -p $SPRETTUR_DIR
-curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
+curl -s -o $SPRETTUR_DIR/sprettur https://sprettur-staging.herokuapp.com/sprettur
 chmod +x $SPRETTUR_DIR/sprettur
 echo "       sprettur installed"
 
