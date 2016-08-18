@@ -10,10 +10,12 @@ set -o pipefail   # do not ignore exit codes when piping output
 unset GIT_DIR
 
 # Directories
-BUILD_DIR=$1
+mkdir -p "$1" "$2"
+BUILD_DIR=$(cd "$1/" && pwd)
+ENV_DIR=$(cd "$1/" && pwd)
 
 echo "-----> Installing sprettur"
-SPRETTUR_DIR=$BUILD_DIR/.heroku/bin
+SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
 mkdir -p $SPRETTUR_DIR
 curl -s -o $SPRETTUR_DIR/sprettur https://sprettur.herokuapp.com/sprettur
 chmod +x $SPRETTUR_DIR/sprettur
@@ -27,6 +29,10 @@ if [ -f $PROCFILE ]; then
 else
   echo "       no Procfile found"
 fi
+
+mkdir -p $BUILD_DIR/.profile.d
+echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
+echo "export PATH=$PATH:$HOME/.sprettur/bin/" >> $BUILD_DIR/.profile.d/sprettur.sh
 
 echo "-----> sprettur done"
 
