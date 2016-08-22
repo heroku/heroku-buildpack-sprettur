@@ -24,7 +24,7 @@ echo "-----> Removing Procfile"
 PROCFILE="$BUILD_DIR/Procfile"
 
 if [ -f $PROCFILE ]; then
-  rm $PROCFILE
+  echo "" > $PROCFILE
   echo "       Procfile removed"
 else
   echo "       no Procfile found"
