@@ -14,10 +14,14 @@ mkdir -p "$1" "$2"
 BUILD_DIR=$(cd "$1/" && pwd)
 ENV_DIR=$(cd "$1/" && pwd)
 
-echo "-----> Installing sprettur"
+DEFAULT_SPRETTUR_URL=https://sprettur.herokuapp.com/sprettur
+SPECIFIED_SPRETTUR_URL=$(cat $ENV_DIR/SPRETTUR_URL)
+SPRETTUR_URL=${SPECIFIED_SPRETTUR_URL:-$DEFAULT_SPRETTUR_URL}
+
+echo '-----> Installing sprettur from $SPRETTUR_URL'
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
 mkdir -p $SPRETTUR_DIR
-curl -s -o $SPRETTUR_DIR/sprettur https://sprettur.herokuapp.com/sprettur
+curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
 chmod +x $SPRETTUR_DIR/sprettur
 
 echo "-----> Removing Procfile"
