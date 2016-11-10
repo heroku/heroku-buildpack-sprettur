@@ -23,7 +23,6 @@ fi
 
 echo "-----> Installing sprettur"
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
-
 mkdir -p $SPRETTUR_DIR
 curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
 chmod +x $SPRETTUR_DIR/sprettur
