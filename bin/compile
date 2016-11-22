@@ -15,6 +15,10 @@ BUILD_DIR=$(cd "$1/" && pwd)
 ENV_DIR=$(cd "$2/" && pwd)
 
 # Detect download location for sprettur binary
+echo $ENV_DIR
+ls $ENV_DIR
+cat "$ENV_DIR/HEROKU_SPRETTUR_URL"
+
 if [ -f $ENV_DIR/HEROKU_SPRETTUR_URL ]; then
   SPRETTUR_URL=$(cat $ENV_DIR/HEROKU_SPRETTUR_URL)
   echo "-----> Installing sprettur from $SPRETTUR_URL"
