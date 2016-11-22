@@ -17,11 +17,12 @@ ENV_DIR=$(cd "$2/" && pwd)
 # Detect download location for sprettur binary
 if [ -f $ENV_DIR/HEROKU_SPRETTUR_URL ]; then
   SPRETTUR_URL=$(cat $ENV_DIR/HEROKU_SPRETTUR_URL)
+  echo "-----> Installing sprettur from $SPRETTUR_URL"
 else
+  echo "-----> Installing sprettur"
   SPRETTUR_URL=https://sprettur.herokuapp.com/sprettur
 fi
 
-echo "-----> Installing sprettur"
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
 mkdir -p $SPRETTUR_DIR
 curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
