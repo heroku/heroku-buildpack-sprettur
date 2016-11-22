@@ -10,22 +10,24 @@ set -o pipefail   # do not ignore exit codes when piping output
 unset GIT_DIR
 
 # Directories
-mkdir -p "$1" "$2"
+mkdir -p "$1" "$2" "$3"
 BUILD_DIR=$(cd "$1/" && pwd)
-ENV_DIR=$(cd "$2/" && pwd)
+ENV_DIR=$(cd "$3/" && pwd)
 
 # Detect download location for sprettur binary
 if [ -f $ENV_DIR/HEROKU_SPRETTUR_URL ]; then
   SPRETTUR_URL=$(cat $ENV_DIR/HEROKU_SPRETTUR_URL)
+  echo "-----> Installing sprettur from $SPRETTUR_URL"
 else
+  echo "-----> Installing sprettur"
   SPRETTUR_URL=https://sprettur.herokuapp.com/sprettur
 fi
 
-echo "-----> Installing sprettur"
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
 mkdir -p $SPRETTUR_DIR
 curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
 chmod +x $SPRETTUR_DIR/sprettur
+echo "       sprettur installed"
 
 echo "-----> Removing Procfile"
 PROCFILE="$BUILD_DIR/Procfile"
@@ -37,10 +39,10 @@ else
   echo "       no Procfile found"
 fi
 
+echo "-----> Exporting sprettur configuration"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
 echo 'export PATH=$PATH:$HOME/.sprettur/bin/' >> $BUILD_DIR/.profile.d/sprettur.sh
-
-echo "-----> sprettur done"
+echo "       sprettur configuration exported"
 
 exit 0
