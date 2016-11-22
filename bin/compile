@@ -10,9 +10,9 @@ set -o pipefail   # do not ignore exit codes when piping output
 unset GIT_DIR
 
 # Directories
-mkdir -p "$1" "$2"
+mkdir -p "$1" "$2" "$3"
 BUILD_DIR=$(cd "$1/" && pwd)
-ENV_DIR=$(cd "$2/" && pwd)
+ENV_DIR=$(cd "$3/" && pwd)
 
 # Detect download location for sprettur binary
 echo $ENV_DIR
