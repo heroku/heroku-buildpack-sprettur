@@ -43,6 +43,7 @@ echo "-----> Exporting sprettur configuration"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
 echo 'export PATH=$PATH:$HOME/.sprettur/bin/' >> $BUILD_DIR/.profile.d/sprettur.sh
+echo 'alias ci=sprettur' >> $BUILD_DIR/.profile.d/sprettur.sh
 echo "       sprettur configuration exported"
 
 exit 0
