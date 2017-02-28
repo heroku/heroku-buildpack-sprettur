@@ -44,8 +44,7 @@ mkdir -p $BUILD_DIR/.profile.d
 echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
 echo 'export PATH=$PATH:$HOME/.sprettur/bin/' >> $BUILD_DIR/.profile.d/sprettur.sh
 
-ln -s $SPRETTUR_DIR/sprettur $SPRETTUR_DIR/ci
-chmod +x $SPRETTUR_DIR/ci
+ln -s $HOME/.sprettur/bin/sprettur $HOME/.sprettur/bin/ci
 
 echo "       sprettur configuration exported"
 
