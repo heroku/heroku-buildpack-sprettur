@@ -41,11 +41,14 @@ fi
 
 echo "-----> Exporting sprettur configuration"
 mkdir -p $BUILD_DIR/.profile.d
+
 echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
 echo 'export PATH=$PATH:$HOME/.sprettur/bin/' >> $BUILD_DIR/.profile.d/sprettur.sh
 
-ln -s $SPRETTUR_DIR/sprettur $SPRETTUR_DIR/ci
-chmod +x $SPRETTUR_DIR/ci
+# Symlink ci -> sprettur
+cd $SPRETTUR_DIR
+ln -s sprettur ci
+chmod +x ci
 
 echo "       sprettur configuration exported"
 
