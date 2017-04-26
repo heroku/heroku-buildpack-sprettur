@@ -42,8 +42,10 @@ fi
 echo "-----> Exporting sprettur configuration"
 mkdir -p $BUILD_DIR/.profile.d
 
-echo "export STACK=$STACK" >> $BUILD_DIR/.profile.d/sprettur.sh
-echo 'export PATH=$PATH:$HOME/.sprettur/bin/' >> $BUILD_DIR/.profile.d/sprettur.sh
+PROFILE_D=$BUILD_DIR/.profile.d/sprettur.sh
+echo "export STACK=$STACK" >> $PROFILE_D
+echo "export PATH=$PATH:$HOME/.sprettur/bin/" >> $PROFILE_D
+echo "export TERM=\${TERM:-xterm}" >> $PROFILE_D
 
 # Symlink ci -> sprettur
 cd $SPRETTUR_DIR
