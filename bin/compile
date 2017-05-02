@@ -44,7 +44,7 @@ mkdir -p $BUILD_DIR/.profile.d
 
 PROFILE_D=$BUILD_DIR/.profile.d/sprettur.sh
 echo "export STACK=$STACK" >> $PROFILE_D
-echo "export PATH=$PATH:$HOME/.sprettur/bin/" >> $PROFILE_D
+echo "export PATH=\$PATH:\$HOME/.sprettur/bin/" >> $PROFILE_D
 echo "export TERM=\${TERM:-xterm}" >> $PROFILE_D
 
 # Symlink ci -> sprettur
