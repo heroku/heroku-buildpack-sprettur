@@ -29,15 +29,10 @@ curl -s -o $SPRETTUR_DIR/sprettur $SPRETTUR_URL
 chmod +x $SPRETTUR_DIR/sprettur
 echo "       sprettur installed"
 
-echo "-----> Removing Procfile"
+echo "-----> Converting Procfile"
 PROCFILE="$BUILD_DIR/Procfile"
-
-if [ -f $PROCFILE ]; then
-  echo "" > $PROCFILE
-  echo "       Procfile removed"
-else
-  echo "       no Procfile found"
-fi
+echo "debug: bash\ntest: ci" > $PROCFILE
+echo "       Procfile converted"
 
 echo "-----> Exporting sprettur configuration"
 mkdir -p $BUILD_DIR/.profile.d
