@@ -8,4 +8,4 @@ It is primarily designed for internal use by the Heroku CI system. Other use cas
 
 Make sure you publish this buildpack in the buildpack registry
 
-`heroku buildpacks:publish heroku/sprettur`
+`heroku buildpacks:publish heroku/sprettur master`
