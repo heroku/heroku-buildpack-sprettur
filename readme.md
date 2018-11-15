@@ -1,4 +1,4 @@
-# Heroku Buildpack Sprettur
+# Heroku Buildpack Sprettur Test
 
 This buildpack injects `sprettur` (the Heroku CI test runner) into a Heroku dyno, aliases it to `ci`, and performs other operations to prepare a dyno for testing with Heroku CI.
 
