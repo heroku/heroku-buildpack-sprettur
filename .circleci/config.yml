@@ -1,0 +1,16 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@1.5.0
+jobs:
+  test:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - run:
+          name: Passing
+          command: exit 0
+
+workflows:
+  main:
+    jobs:
+      - test
