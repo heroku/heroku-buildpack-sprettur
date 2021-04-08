@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  test:
+    steps:
+      - run:
+        name: Passing
+        command: exit 0
+
