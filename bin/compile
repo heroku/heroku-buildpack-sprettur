@@ -20,7 +20,7 @@ if [ -f $ENV_DIR/HEROKU_SPRETTUR_URL ]; then
   echo "-----> Installing sprettur from $SPRETTUR_URL"
 else
   echo "-----> Installing sprettur"
-  SPRETTUR_URL=https://sprettur.herokuapp.com/sprettur
+  SPRETTUR_URL=https://sprettur.heroku.com/sprettur
 fi
 
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
