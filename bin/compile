@@ -19,8 +19,15 @@ if [ -f $ENV_DIR/HEROKU_SPRETTUR_URL ]; then
   SPRETTUR_URL=$(cat $ENV_DIR/HEROKU_SPRETTUR_URL)
   echo "-----> Installing sprettur from $SPRETTUR_URL"
 else
-  echo "-----> Installing sprettur"
-  SPRETTUR_URL=https://sprettur.heroku.com/sprettur
+  # 1% staggered rollout: use pre-prod 1% of the time
+  RANDOM_PERCENT=$(($RANDOM % 100))
+  if [ $RANDOM_PERCENT -lt 1 ]; then
+    echo "-----> Installing sprettur from staging (rollout test)"
+    SPRETTUR_URL=https://sprettur-staging.herokuapp.com/sprettur
+  else
+    echo "-----> Installing sprettur"
+    SPRETTUR_URL=https://sprettur.heroku.com/sprettur
+  fi
 fi
 
 SPRETTUR_DIR=$BUILD_DIR/.sprettur/bin
